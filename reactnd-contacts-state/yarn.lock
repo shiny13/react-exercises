@@ -3839,7 +3839,7 @@ form-data@~2.3.2:
 
 form-serialize@^0.7.2:
   version "0.7.2"
-  resolved "https://registry.npmjs.org/form-serialize/-/form-serialize-0.7.2.tgz"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
   integrity sha1-sKL/DCICb7bT0VydM/beakMuRzI=
 
 forwarded@~0.1.2:
