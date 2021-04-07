@@ -1,19 +1,26 @@
 # My Reads App - React NanoDegree
 
-My Reads is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. 
+My Reads is a basic javascript application made in react where the user can assign books into different book shelf catalogues. These cataglogues consist of:
+- None
+- Currently reading
+- Want to read
+- Read
 
-The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
+The application futher allows the user to search for books with the book's author or title using a search input box and then choose books to be assigned to different catalogues in the application. 
 
 ## Installation guidelines
 
-The following steps will help install and run **My Reads App** on your local computer.
-- Download or clone this repository
-- run `npm install` from the within the root directory
-- run `npm start` or `yarn start`
-- The app will run on your local machine on `*port: 3000*` or simply 
-- Open `http://localhost:3000` in a your browser
+The following steps can be followed after downloading the source code to your local machine.
+- `npm install` (from the within the root directory of the application to install the node modules)
 
-### starter-template-app
+### Running the application
+After installing the node modules, start the project with:
+- `npm start`
+- The app will launch on your default web browser on localhost with port 3000.
+
+Note: If the default web browser does not load, please open your web browser and access it on the following URL: `http://localhost:3000`
+
+### Starter files used
 
 Starter files taken from [Udacity's myreads starter template repository](https://github.com/udacity/reactnd-project-myreads-starter)
 
