@@ -17,7 +17,11 @@ The following steps will help install and run **My Reads App** on your local com
 
 Starter files taken from [Udacity's myreads starter template repository](https://github.com/udacity/reactnd-project-myreads-starter)
 
-### Project References
+### Project Package References
 
 - React Headroom: 
 https://github.com/KyleAMathews/react-headroom
+- react-router-dom:
+https://www.npmjs.com/package/react-router-dom
+- sort-by:
+https://www.npmjs.com/package/sort-by
