@@ -22,7 +22,8 @@ Note: If the default web browser does not load, please open your web browser and
 
 ### Starter files used
 
-Starter files taken from [Udacity's myreads starter template repository](https://github.com/udacity/reactnd-project-myreads-starter)
+The project was created using the `yarn create react-app reactnd-project-myreads` command
+Then the boiler plate code was taken from [Udacity's react nano degree starter template repository](https://github.com/udacity/reactnd-project-myreads-starter)
 
 ### Project Package References
 
