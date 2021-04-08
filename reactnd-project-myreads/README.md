@@ -34,4 +34,4 @@ https://www.npmjs.com/package/sort-by
 
 ## Screenshot of the application
 
-![Screenshot of my reads app](reactnd_my_bookshelf.png)
+![Screenshot of my reads app](/src/reactnd_my_bookshelf.png)
