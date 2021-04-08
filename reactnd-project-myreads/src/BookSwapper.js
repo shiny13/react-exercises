@@ -6,7 +6,7 @@ class BookSwapper extends Component {
     };
     changeShelfStatus = (event) => {
       const { value } = event.target;
-      this.setState({ value });
+      this.setState({ value: value });
       this.props.moveBook(this.props.book, value);
     };
     render() {

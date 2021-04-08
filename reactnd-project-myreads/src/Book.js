@@ -11,8 +11,8 @@ class Book extends Component {
                     <div
                     className="book-cover"
                     style={{
-                        maxWidth: 130,
-                        maxHeight: 200,
+                        width: 128,
+                        height: 193,
                         backgroundImage: 
                         `url(${
                             book.imageLinks
@@ -21,7 +21,7 @@ class Book extends Component {
                         })`
                     }}
                     />
-                    <BookSwapper book={book} shelf={shelf} moveBook={moveBook} />
+                    <BookSwapper book={book} value={shelf} moveBook={moveBook} />
                 </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">

@@ -6,6 +6,7 @@ class InputComponent extends Component {
   };
   inputChanged = event => {
     const val = event.target.value;
+    console.log('input', val)
     this.setState({ value: val }, () => {
       this.props.onSearch(val);
     });

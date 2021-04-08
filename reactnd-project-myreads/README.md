@@ -31,3 +31,7 @@ Then the boiler plate code was taken from [Udacity's react nano degree starter t
 https://www.npmjs.com/package/react-router-dom
 - sort-by:
 https://www.npmjs.com/package/sort-by
+
+## Screenshot of the application
+
+![Screenshot of my reads app](reactnd_my_bookshelf.png)

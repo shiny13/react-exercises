@@ -3,7 +3,6 @@ import Book from './Book';
 
 const ResultList = props => {
   const { searches, books, moveBook } = props;
-
   const searchedBooks = searches.map(book => {
     books.map(b => {
       if (b.id === book.id) {
@@ -13,6 +12,7 @@ const ResultList = props => {
     });
     return book;
   });
+  console.log('searchedBooks', searchedBooks)
   return (
     <div className="search-books-results">
       <ul className="books-grid">

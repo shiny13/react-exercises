@@ -18,12 +18,8 @@ class BooksApp extends Component {
     error: ''
   }
 
-  componentDidMount() {
-    this.getAllBooks()
-  }
-
-  getAllBooks = () => {
-    BooksAPI.getAll()
+  async componentDidMount() {
+    await BooksAPI.getAll()
       .then((books) => {
         this.setState({ books: books });
       })
@@ -50,19 +46,21 @@ class BooksApp extends Component {
   };
   
   bookSearchQuery = (text) => {
-    if (text !== '') {
+    if (text.length > 0) {
       BooksAPI.search(text)
-        .then(books => {
+        .then((result) => {
+          console.log('result', result)
           // Checking for errors from the API first
-          if (books.error !== '') {
+          if (result.error) {
             this.setState({ searches: [] });
           } else { 
-            this.setState({ searches: books });
+            this.setState({ searches: result });
           }
         });
     } else {
       this.setState({ searches: [] });
     }
+    console.log('this.state', this.state)
   };
   clearSearch = () => {
     this.setState({ searches: [] });
