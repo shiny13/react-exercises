@@ -1,10 +1,10 @@
 # My Reads App - React NanoDegree
 
 My Reads is a basic javascript application made in react where the user can assign books into different book shelf catalogues. These cataglogues consist of:
-- None
 - Currently reading
 - Want to read
 - Read
+- None
 
 The application futher allows the user to search for books with the book's author or title using a search input box and then choose books to be assigned to different catalogues in the application. 
 
