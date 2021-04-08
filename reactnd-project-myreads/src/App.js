@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import ListBooks from './components/ListBooks'
-import Search from './components/Search'
 import './App.css'
+import BookList from './BookList';
+import SearchItems from './SearchItems'
 
-class BooksApp extends React.Component {
+const categories = [
+  { key: 'currentlyReading', name: 'Currently Reading' },
+  { key: 'wantToRead', name: 'Want to Read' },
+  { key: 'read', name: 'Read' }
+];
+
+class BooksApp extends Component {
   state = {
     books: [],
-    showSearchPage: false
+    searches: [],
+    error: ''
   }
 
   componentDidMount() {
@@ -16,36 +23,74 @@ class BooksApp extends React.Component {
   }
 
   getAllBooks = () => {
-    BooksAPI.getAll().then((books) => {
-        this.setState({ books });
-    })
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState({ books: books });
+      })
+      .catch(err => {
+        this.setState({ error: String(err) });
+      })
   }
 
-  handleBookChange  = (event, book) => {
-      const shelf = event.target.value
-
-      if (this.state.books) {
-        BooksAPI.update(book,shelf).then(() => {
-          book.shelf = shelf;
-          this.setState(state => ({
-            books: state.books.filter(b => b.id !== book.id).concat([ book ])
-          }))
-        })
-      }
-  }
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+      .catch(err => {
+        this.setState({ error: String(err) });
+      });
+    if (shelf === 'none') {
+      this.setState(prevState => ({
+        books: prevState.books.filter(b => b.id !== book.id)
+      }));
+    } else {
+      book.shelf = shelf;
+      this.setState(prevState => ({
+        books: prevState.books.filter(b => b.id !== book.id).concat(book)
+      }));
+    }
+  };
+  
+  bookSearchQuery = (text) => {
+    if (text !== '') {
+      BooksAPI.search(text)
+        .then(books => {
+          // Checking for errors from the API first
+          if (books.error !== '') {
+            this.setState({ searches: [] });
+          } else { 
+            this.setState({ searches: books });
+          }
+        });
+    } else {
+      this.setState({ searches: [] });
+    }
+  };
+  clearSearch = () => {
+    this.setState({ searches: [] });
+  };
 
   render() {
+    const { books, searches, error } = this.state;
+
     return (
       <div className="app">
-        { /* Main Page */ }
         <Route exact path="/" render={() => (
-            <ListBooks books={this.state.books} handleBookChange={this.handleBookChange}/>
-        )}/>
-
-        { /* Search Page */ }
-        <Route path="/search" render={( {history} ) => (
-            <Search booksShelved={this.state.books} handleBookChange={this.handleBookChange} />
-        )}/>
+            <BookList
+              categories={categories}
+              books={books}
+              moveBook={this.moveBook}
+            />
+          )}
+        />
+        <Route path="/search" render={() => (
+            <SearchItems
+              searches={searches}
+              books={books}
+              onSearch={this.bookSearchQuery}
+              moveBook={this.moveBook}
+              clearSearch={this.clearSearch}
+            />
+          )}
+        />
       </div>
     )
   }

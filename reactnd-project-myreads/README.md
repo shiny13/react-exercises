@@ -27,8 +27,6 @@ Then the boiler plate code was taken from [Udacity's react nano degree starter t
 
 ### Project Package References
 
-- React Headroom: 
-https://github.com/KyleAMathews/react-headroom
 - react-router-dom:
 https://www.npmjs.com/package/react-router-dom
 - sort-by:
