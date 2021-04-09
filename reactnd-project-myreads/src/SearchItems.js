@@ -9,10 +9,8 @@ class SearchItems extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to="/">
-            <button className="close-search" onClick={clearSearch}>
+          <Link to="/" className="close-search" onClick={clearSearch}>
               Back
-            </button>
           </Link>
           <InputComponent onSearch={onSearch} />
         </div>
