@@ -30,16 +30,54 @@ function createStore(reducer) {
 }
 
 // App code 
+const ADD_TODO = 'ADD_TODO'
+const REMOVE_TODO = 'REMOVE_TODO'
+const TOGGLE_TODO = 'TOGGLE_TODO'
+const ADD_GOAL = 'ADD_GOAL'
+const REMOVE_GOAL = 'REMOVE_GOAL'
+
+// Action creators
+function addTodoAction (todo) {
+    return {
+        type: ADD_TODO,
+        todo
+    }
+}
+function removeTodoAction (id) {
+    return {
+        type: REMOVE_TODO,
+        id
+    }
+}
+function toggleTodoAction(id) {
+    return {
+        type: TOGGLE_TODO,
+        id
+    }
+}
+function addGoalAction (goal) {
+    return {
+        type: ADD_GOAL,
+        goal
+    }
+}
+function removeGoalAction (id) {
+    return {
+        type: REMOVE_GOAL,
+        id
+    }
+}
+
 // This is a reducer function as it takes in a state and action
 // then returns a new state based on the action
 // a reducer must be a pure function 
 function todos (state = [], action) {
     switch(action.type) {
-        case 'ADD_TODO':
+        case ADD_TODO:
             return state.concat([action.todo])
-        case 'REMOVE_TODO':
+        case REMOVE_TODO:
             return state.filter((todo) => todo.id !== action.id)
-        case 'TOGGLE_TODO':
+        case TOGGLE_TODO:
             return state.map((todo) => 
             todo.id !== action.id 
                 ? todo 
@@ -52,9 +90,9 @@ function todos (state = [], action) {
 
 function goals (state = [], action) {
     switch(action.type) {
-        case 'ADD_GOAL':
+        case ADD_GOAL:
             return state.concat([action.goal])
-        case 'REMOVE_GOAL':
+        case REMOVE_GOAL:
             return state.filter((goal) => goal.id !== action.id)
         default: 
             return state 
@@ -76,53 +114,29 @@ store.subscribe(() => {
     console.log('The store changed.')
 })*/
 
-store.dispatch({
-    type: 'ADD_TODO',
-    todo: {
+store.dispatch(addTodoAction({
         id: 1,
         name: 'Learn redux',
         complete: false
-    }
-})
-store.dispatch({
-    type: 'ADD_TODO',
-    todo: {
+    }))
+store.dispatch(addTodoAction({
         id: 2,
         name: 'Learn angular',
         complete: false
-    }
-})
-store.dispatch({
-    type: 'ADD_TODO',
-    todo: {
+    }))
+store.dispatch(addTodoAction({
         id: 3,
         name: 'walk my lion',
         complete: false
-    }
-})
-store.dispatch({
-    type: 'REMOVE_TODO',
-    id: 2
-})
-store.dispatch({
-    type: 'TOGGLE_TODO',
-    id: 3
-})
-store.dispatch({
-    type: 'ADD_GOAL',
-    goal: {
+    }))
+store.dispatch(removeTodoAction(2))
+store.dispatch(toggleTodoAction(3))
+store.dispatch(addGoalAction({
         id: 1,
         name: 'Learn about life',
-    }
-})
-store.dispatch({
-    type: 'ADD_GOAL',
-    goal: {
+    }))
+store.dispatch(addGoalAction({
         id: 2,
         name: 'Lose 10KGs',
-    }
-})
-store.dispatch({
-    type: 'REMOVE_GOAL',
-    id: 2
-})
+    }))
+store.dispatch(removeGoalAction(2))
