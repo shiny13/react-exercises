@@ -29,14 +29,6 @@ function createStore(reducer) {
     }
 }
 
-const store = createStore() 
-store.subscribe(() => {
-    console.log('The new state is: ', store.getState())
-})
-const unsubscribe = store.subscribe(() => {
-    console.log('The store changed.')
-})
-
 // App code 
 // This is a reducer function as it takes in a state and action
 // then returns a new state based on the action
@@ -69,16 +61,82 @@ function goals (state = [], action) {
     }
 }
 
-const store = createStore(todos)
+function app (state = {}, action) {
+    return {
+        todos: todos(state.todos, action),
+        goals: goals(state.goals, action)
+    }
+}
+
+const store = createStore(app)
 store.subscribe(() => {
     console.log('The new state is: ', store.getState())
+})
+const unsubscribe = store.subscribe(() => {
+    console.log('The store changed.')
 })
 
 store.dispatch({
     type: 'ADD_TODO',
     todo: {
-        id: 0,
+        id: 1,
         name: 'Learn redux',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'ADD_TODO',
+    todo: {
+        id: 2,
+        name: 'Learn angular',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'ADD_TODO',
+    todo: {
+        id: 3,
+        name: 'walk my lion',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'REMOVE_TODO',
+    todo: {
+        id: 2,
+        name: 'Learn angular',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'TOGGLE_TODO',
+    todo: {
+        id: 2,
+        name: 'walk my lion',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'ADD_GOAL',
+    todo: {
+        id: 1,
+        name: 'Learn about life',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'ADD_GOAL',
+    todo: {
+        id: 2,
+        name: 'Lose 10KGs',
+        complete: false
+    }
+})
+store.dispatch({
+    type: 'REMOVE_GOAL',
+    todo: {
+        id: 2,
+        name: 'Lose 10KGs',
         complete: false
     }
 })
