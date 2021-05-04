@@ -72,9 +72,9 @@ const store = createStore(app)
 store.subscribe(() => {
     console.log('The new state is: ', store.getState())
 })
-const unsubscribe = store.subscribe(() => {
+/*const unsubscribe = store.subscribe(() => {
     console.log('The store changed.')
-})
+})*/
 
 store.dispatch({
     type: 'ADD_TODO',
@@ -102,26 +102,17 @@ store.dispatch({
 })
 store.dispatch({
     type: 'REMOVE_TODO',
-    todo: {
-        id: 2,
-        name: 'Learn angular',
-        complete: false
-    }
+    id: 2
 })
 store.dispatch({
     type: 'TOGGLE_TODO',
-    todo: {
-        id: 2,
-        name: 'walk my lion',
-        complete: false
-    }
+    id: 3
 })
 store.dispatch({
     type: 'ADD_GOAL',
     goal: {
         id: 1,
         name: 'Learn about life',
-        complete: false
     }
 })
 store.dispatch({
@@ -129,14 +120,9 @@ store.dispatch({
     goal: {
         id: 2,
         name: 'Lose 10KGs',
-        complete: false
     }
 })
 store.dispatch({
     type: 'REMOVE_GOAL',
-    goal: {
-        id: 2,
-        name: 'Lose 10KGs',
-        complete: false
-    }
+    id: 2
 })
