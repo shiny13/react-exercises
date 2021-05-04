@@ -118,7 +118,7 @@ store.dispatch({
 })
 store.dispatch({
     type: 'ADD_GOAL',
-    todo: {
+    goal: {
         id: 1,
         name: 'Learn about life',
         complete: false
@@ -126,7 +126,7 @@ store.dispatch({
 })
 store.dispatch({
     type: 'ADD_GOAL',
-    todo: {
+    goal: {
         id: 2,
         name: 'Lose 10KGs',
         complete: false
@@ -134,7 +134,7 @@ store.dispatch({
 })
 store.dispatch({
     type: 'REMOVE_GOAL',
-    todo: {
+    goal: {
         id: 2,
         name: 'Lose 10KGs',
         complete: false
