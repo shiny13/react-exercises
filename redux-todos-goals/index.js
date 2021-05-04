@@ -42,11 +42,20 @@ const unsubscribe = store.subscribe(() => {
 // then returns a new state based on the action
 // a reducer must be a pure function 
 function todos (state = [], action) {
-    if (action.type === 'ADD_TODO') {
-        return state.concat([action.todo])
+    switch(action.type) {
+        case 'ADD_TODO':
+            return state.concat([action.todo])
+        case 'REMOVE_TODO':
+            return state.filter((todo) => todo !== action.id)
+        case 'TOGGLE_TODO':
+            return state.map((todo) => 
+            todo.id !== action.id 
+                ? todo 
+                : Object.assign({}, todo, { complete: !todo.complete })
+             )
+        default: 
+            return state 
     }
-
-    return state 
 }
 
 const store = createStore(todos)
