@@ -126,35 +126,6 @@ store.subscribe(() => {
     console.log('The store changed.')
 })*/
 
-/*
-store.dispatch(addTodoAction({
-        id: 1,
-        name: 'Learn redux',
-        complete: false
-    }))
-store.dispatch(addTodoAction({
-        id: 2,
-        name: 'Learn angular',
-        complete: false
-    }))
-store.dispatch(addTodoAction({
-        id: 3,
-        name: 'walk my lion',
-        complete: false
-    }))
-store.dispatch(removeTodoAction(2))
-store.dispatch(toggleTodoAction(3))
-store.dispatch(addGoalAction({
-        id: 1,
-        name: 'Learn about life',
-    }))
-store.dispatch(addGoalAction({
-        id: 2,
-        name: 'Lose 10KGs',
-    }))
-store.dispatch(removeGoalAction(2))
-*/
-
 // DOM code
 function addTodo () {
     const input = document.getElementById('todo')
@@ -183,10 +154,27 @@ document.getElementById('todoBtn').addEventListener('click', addTodo)
 
 document.getElementById('goalBtn').addEventListener('click', addGoal)
 
+function createRemoveButton(onClick) {
+    const removeBtn = document.createElement('button')
+    removeBtn.innerHTML = 'X' 
+    removeBtn.addEventListener('click', onClick)
+    return removeBtn
+}
+
 function addTodoToDOM(todo) {
     const node = document.createElement('li')
     const text = document.createTextNode(todo.name)
+
+    const removeBtn = createRemoveButton(() => {
+        store.dispatch(removeTodoAction(todo.id))
+    })
+
     node.appendChild(text)
+    node.appendChild(removeBtn)
+    node.style.textDecoration = todo.complete ? 'line-through' : 'none'
+    node.addEventListener('click', () => {
+        store.dispatch(toggleTodoAction(todo.id))
+    })
 
     document.getElementById('todos')
         .appendChild(node)
@@ -196,7 +184,13 @@ function addTodoToDOM(todo) {
 function addGoalToDOM(goal) {
     const node = document.createElement('li')
     const text = document.createTextNode(goal.name)
+
+    const removeBtn = createRemoveButton(() => {
+        store.dispatch(removeGoalAction(goal.id))
+    })
+
     node.appendChild(text)
+    node.appendChild(removeBtn)
 
     document.getElementById('goals')
         .appendChild(node)
