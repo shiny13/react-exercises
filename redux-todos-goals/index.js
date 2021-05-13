@@ -1,3 +1,8 @@
+function generateId () {
+    return Math.random().toString(36).substring(2) + 
+            (new Date()).getTime().toString(36);
+}
+
 function createStore(reducer) {
     // The store should have four parts
     // 1. The state
@@ -109,11 +114,19 @@ function app (state = {}, action) {
 const store = createStore(app)
 store.subscribe(() => {
     console.log('The new state is: ', store.getState())
+    const { goals, todos } = store.getState()
+
+    document.getElementById('goals').innerHTML = ''
+    document.getElementById('todos').innerHTML = ''
+
+    goals.forEach(addGoalToDOM)
+    todos.forEach(addTodoToDOM)
 })
 /*const unsubscribe = store.subscribe(() => {
     console.log('The store changed.')
 })*/
 
+/*
 store.dispatch(addTodoAction({
         id: 1,
         name: 'Learn redux',
@@ -140,3 +153,51 @@ store.dispatch(addGoalAction({
         name: 'Lose 10KGs',
     }))
 store.dispatch(removeGoalAction(2))
+*/
+
+// DOM code
+function addTodo () {
+    const input = document.getElementById('todo')
+    const name = input.value
+    input.value = ''
+
+    store.dispatch(addTodoAction({
+        name,
+        complete: false,
+        id: generateId()
+    }))
+}
+
+function addGoal() {
+    const input = document.getElementById('goal')
+    const name = input.value
+    input.value = ''
+
+    store.dispatch(addGoalAction({
+        id: generateId(),
+        name
+    }))
+}
+
+document.getElementById('todoBtn').addEventListener('click', addTodo)
+
+document.getElementById('goalBtn').addEventListener('click', addGoal)
+
+function addTodoToDOM(todo) {
+    const node = document.createElement('li')
+    const text = document.createTextNode(todo.name)
+    node.appendChild(text)
+
+    document.getElementById('todos')
+        .appendChild(node)
+    
+}
+
+function addGoalToDOM(goal) {
+    const node = document.createElement('li')
+    const text = document.createTextNode(goal.name)
+    node.appendChild(text)
+
+    document.getElementById('goals')
+        .appendChild(node)
+}
