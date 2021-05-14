@@ -74,7 +74,7 @@ function goals (state = [], action) {
 }
 
 // ES6 syntax 
-const checker = (store) => (next) = (action) {
+const checker = (store) => (next) = (action) => {
     if (action.type === ADD_TODO &&
         action.todo.name.toLowerCase().includes('bitcoin')) {
         return alert('Bitcoin detected! Bad idea...')
