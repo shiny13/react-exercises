@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# React Project 2 - Would You Rather?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The name of the project is Would You Rather and it is created using React and Redux packages as part of the React NanoDegree's second project from Udacity.
 
-## Available Scripts
+This is a question-answer app which requires the user to login. A password is not needed to login for this app. Once the user is logged in they can answer questions with two possible answers. A static JSON data is provided using a Javascript file where new questions do not actually do not get saved, but a real life behaviour is mimiced by using delayed save response. The application uses various javascript libraries and taught in the udacity lessons. 
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+1. You need to have the following installed prior to starting the project: Node.js, npm and yarn.
+2. Get the project from the zip file and extract it in a location.
+3. Start terminal (for Mac) or Command prompt (in Windows)
+4. Run `npm install` or `yarn install`
+5. Run `npm start` or `yarn start`
+6. Your default browser will start the project on port 3000: http://localhost:3000
+7. Some avatars used here are links to uploaded images so internet connected is needed to load those images.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Login view
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+URL for login page when starting at localhost:
+http://localhost:3000/login
 
-### `yarn test`
+![login page](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/login.png?raw=true)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+No password is required when logging into the application. A pre-existing list if three users exist for the login dropdown options. Users are required to login before they can use the application.
 
-### `yarn build`
+![list of users](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/login-select-users.png?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Homepage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The home page is composed of a list of questions asked by various users (including the current logged in user) in chronological order (newest first). The questions are categorized in to 2 tabs with a count of questions for each category: 
+The home page of the application consists of a list of questions in descending order with respect to datetime. The questions are categorised in two types:
+- Unanswered Questions
+- Answered Questions 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+NOTE: The unasnwered question list will first appear when visiting this page. The homepage also remembers the tab that the user has viewed, with the exception of a new question created. 
 
-### `yarn eject`
+![unanswered questions](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/home-unanswered-questions.png?raw=true)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![answered questions](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/home-answered-questions.png?raw=true)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## View Polls view
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+URL to view a question by question id: 
+http://localhost:3000/questions/<question_id>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The view polls page can be used to see the questions' details. 
+- It will show the poll results when the question is answered. 
+- It will allow the user to answer and submit by picking a question if it isn't answered. 
 
-## Learn More
+NOTE: Poll results/answers will not be shown if left unanswered.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Poll Results view
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Poll results here show the total vote count and percent of votes.
 
-### Code Splitting
+![poll results](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/questions-result.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Answer Question view
 
-### Analyzing the Bundle Size
+The poll results are only shown after a question is answered. User must choose an answer before submitting, where no options chosen and clicking submit will show an error.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![answer questions view](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/question-submit-answer.png?raw=true)
 
-### Making a Progressive Web App
+## New Questions view
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+URL to see the add question view:
+http://localhost:3000/add
 
-### Advanced Configuration
+![new question view](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/new-question.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A new question can be created by typing in the two possible answers to the question.
 
-### Deployment
+## Leaderboard view
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+URL for the leaderboard view: 
+http://localhost:3000/leaderboard
 
-### `yarn build` fails to minify
+![leaderboard view](https://github.com/shiny13/react-exercises/blob/master/would-you-rather-app/screenshots/leaderboard.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The leaderboard view shows the users ranked from top to bottom with their respective scores. The score is based on the sum of questions answered and created questions to participate in the game.
+
+## Logout view
+
+The user will be able to logout once logout button is clicked. 
+
+## Redirects, Referrals and 404s
+1. The login component remembers URLs and does not allow users to access any views without logging in. It will simply redirect to the login view if hte user is not logged in. 
+2. A 404 error will be shown if the app does not recognise the URL or if the question does not exist and the user is directly trying to access it via URL.
+
+
+
+
+
