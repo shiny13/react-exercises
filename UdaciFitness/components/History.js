@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Platform, TouchableOpacity } from "react-native";
-import { add } from "react-native-reanimated";
 import { connect } from 'react-redux'
 import { receiveEntries, addEntry } from '../actions'
 import { fetchCalendarResults } from "../utils/api";
 import { timeToString, getDailyReminderValue } from '../utils/helpers'
-import { formatCalendarResults } from '../utils/_calendar'
-import UdaciFitnessCalendar from 'react-native-calendars'
+import UdaciFitnessCalendar from 'udacifitness-calendar'
 import { white } from '../utils/colors'
 import DateHeader from './DateHeader'
 import MetricCard from './MetricCard'
