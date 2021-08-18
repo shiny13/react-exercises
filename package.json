@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "create-react-app": "^4.0.3",
-    "functional-components": "^0.0.5",
-    "react-headroom": "^3.1.1"
-  }
-}
